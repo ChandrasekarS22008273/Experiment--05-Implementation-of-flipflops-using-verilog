@@ -1,9 +1,12 @@
 # Experiment--05-Implementation-of-flipflops-using-verilog
-### AIM: To implement all the flipflops using verilog and validating their functionality using their functional tables
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
+### AIM: 
+To implement all the flipflops using verilog and validating their functionality using their functional tables
+### HARDWARE REQUIRED:  
+ PC, Cyclone II , USB flasher
+### SOFTWARE REQUIRED:   
+Quartus prime
 ### THEORY 
-SR Flip-Flop
+### SR Flip-Flop
 SR flip-flop operates with only positive clock transitions or negative clock transitions. Whereas, SR latch operates with enable signal. The circuit diagram of SR flip-flop is shown in the following figure.
 
 ![image](https://user-images.githubusercontent.com/36288975/167910294-bb550548-b1dc-4cba-9044-31d9037d476b.png)
@@ -102,39 +105,98 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
 ### Procedure
-/* write all the steps invloved */
+STEP 1: Open Quartus II and select new project and choose the file location.
 
+STEP 2: Module Declaration. Module should have the file name.
 
+STEPS 3: Input-Output Delecaration.
 
+STEPS 4: Use assign declaration and wire to define the functionality of logic circuits.
+
+STEP 5: At the end give endmodule.
+
+STEP 6: Run the program and choose RTL viewer to get RTL realization
 ### PROGRAM 
+```
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: CHANDRASEKAR S
+RegisterNumber:212222230025
 */
+SR FLIPFLOPS CODE:
+module ex5(S,R,clk,Q,Qbar);
+input S,R,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=S|((~R)&Q);
+Qbar=R|((~S)&(Qbar));
+end
+endmodule
 
+JK FLIPFLOPS CODE:
+module ex5(J,K,clk,Q,Qbar);
+input J,K,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=(J&(~Q))|((~K)&Q);
+Qbar=((~J)&(Qbar))|K&(~Qbar);
+end
+endmodule
 
+D FLIPFLOPS CODE:
+module ex5(D,clk,Q,Qbar);
+input D,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=D;
+Qbar=~D;
+end
+endmodule
 
+T FLIPFLOPS CODE:
+module ex5(T,clk,Q,Qbar);
+input T,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=(T&(~Q))|((~T)&Q);
+Qbar=((~T)&Qbar)|(T&(~Qbar));
+end
+endmodule
 
-
-
-### RTL LOGIC FOR FLIPFLOPS 
-
-
-
-
-
-
-
-
-
-### TIMING DIGRAMS FOR FLIP FLOPS 
-
-
-
-
-
-
-
-
-### RESULTS 
+```
+# RTL LOGIC FOR FLIPFLOPS 
+### SR FLIPFLOPS :
+![image](https://github.com/ChandrasekarS22008273/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119643845/dd252884-f5ed-456c-8b0a-07dd60f78241)
+### JK FLIPFLOPS :
+![image](https://github.com/ChandrasekarS22008273/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119643845/5cb6f8c1-8e02-4045-8c61-c7d1ba8d32ac)
+### D FLIPFLOPS :
+![image](https://github.com/ChandrasekarS22008273/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119643845/4b6a13cf-0835-47a8-95d7-434c4c59caa4)
+### T FLIPFLOPS :
+![image](https://github.com/ChandrasekarS22008273/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119643845/0ba7d1df-2008-4e5f-adb2-343be79b8851)
+# TIMING DIGRAMS FOR FLIP FLOPS 
+### SR FLIPFLOPS :
+![image](https://github.com/ChandrasekarS22008273/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119643845/d7e8556b-781a-4d60-8a87-7364af93b701)
+### JK FLIPFLOPS :
+![image](https://github.com/ChandrasekarS22008273/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119643845/a58189bf-19f8-4989-8f1f-ade1dacd2a99)
+### D FLIPFLOPS :
+![image](https://github.com/ChandrasekarS22008273/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119643845/07580049-e8c9-48a9-a904-e23f295b6ee4)
+### T FLIPFLOPS :
+![image](https://github.com/ChandrasekarS22008273/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119643845/ccd7d62b-0548-4f62-9b1d-1ef2b71dd522)
+# RESULTS :
+Implementation-of-flipflops-using-verilog successfully completed.
